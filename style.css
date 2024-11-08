@@ -14,7 +14,7 @@ body {
   background: linear-gradient(45deg, #d09530, #164284);
   margin: 0;
   height: 100vh;
-  justify-content: center;
+  justify-content: center; /* Center vertically for larger screens */
   gap: 20px;
   overflow: hidden;
 }
@@ -76,6 +76,8 @@ footer p {
 @media (max-width: 600px) {
   body {
     gap: 15px;
+    justify-content: flex-start; /* Align content to the top */
+    padding-top: 40px; /* Adjust this value to shift content down */
   }
 
   figure {
