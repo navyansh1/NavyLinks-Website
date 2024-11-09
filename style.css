@@ -48,36 +48,37 @@ h2 {
 main {
   gap: 20px;
   width: 100%;
+}
 
-  button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    width: 160px;
-    height: 45px;
-    background-color: #ffffff;
-    color: #333;
-    border: none;
-    border-radius: 35px;
+button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  width: 160px;
+  height: 45px;
+  background-color: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 35px;
+}
 
-    &:hover {
-      cursor: pointer;
-      background-color: #ffffff00;
-      border: 1px solid white;
-      color: white;
-    }
-  }
+button:hover {
+  cursor: pointer;
+  background-color: #ffffff00;
+  border: 1px solid white;
+  color: white;
 }
 
 footer p {
   font-size: 12px;
 }
 
+/* Mobile adjustments */
 @media (max-width: 600px) {
   body {
     gap: 15px;
-    justify-content: flex-start; /* Align content to the top */
-    padding-top: 40px; /* Adjust this value to shift content down */
+    justify-content: flex-start;
+    padding-top: 40px;
   }
 
   figure {
@@ -102,7 +103,8 @@ footer p {
   }
 
   button {
-    width: 140px;
+    width: 180px; /* Increased button width for small screens */
+    font-size: 13px; /* Slightly reduced font size to fit text */
     height: 40px;
   }
 }
