@@ -92,24 +92,26 @@
         transform: translateZ(0);
       }
       
-      /* Shimmer Effect */
+      /* Enhanced Shimmer Effect */
       button::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
         background: linear-gradient(45deg, 
           transparent, 
-          rgba(255, 255, 255, 0.1), 
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.1), 
+          rgba(255, 255, 255, 0.05), 
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.4), 
+          rgba(255, 255, 255, 0.05),
           transparent);
         transform: rotate(45deg);
         pointer-events: none;
         z-index: 1;
-        animation: shimmer 3s infinite linear;
+        animation: shimmer 2s infinite linear;
       }
       
       @keyframes shimmer {
@@ -151,15 +153,16 @@
       .particle {
         position: absolute;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
         animation: float 15s infinite linear;
+        z-index: 1;
       }
       
       @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 0.7; }
-        50% { opacity: 1; }
-        100% { transform: translateY(-20vh) rotate(360deg); opacity: 0.7; }
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0.85; }
+        50% { opacity: 1; transform: scale(1.1); }
+        100% { transform: translateY(-20vh) rotate(360deg); opacity: 0.85; }
       }
       
       /* Animation keyframes */
@@ -274,40 +277,47 @@
       // Create floating particles/bubbles
       function createParticles() {
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 30; // Number of particles
+        const particleCount = 50; // Increased number of particles
         
         for (let i = 0; i < particleCount; i++) {
           const particle = document.createElement('div');
           particle.classList.add('particle');
           
-          // Random size
-          const size = Math.random() * 20 + 5;
+          // Random size (increased)
+          const size = Math.random() * 35 + 10;
           particle.style.width = `${size}px`;
           particle.style.height = `${size}px`;
           
-          // Random position
+          // Random position (more spread out)
           const posX = Math.random() * 100;
           const posY = Math.random() * 100 + 100;
           particle.style.left = `${posX}%`;
           particle.style.bottom = `${-posY}%`;
           
-          // Random opacity and color
-          particle.style.opacity = Math.random() * 0.6 + 0.2;
+          // Higher baseline opacity
+          particle.style.opacity = Math.random() * 0.5 + 0.5;
           
-          // Gold or blue tinted bubbles to match the background
+          // Gold or blue tinted bubbles to match the background (more vibrant)
           if (Math.random() > 0.5) {
-            particle.style.background = 'rgba(208, 149, 48, 0.3)';
-            particle.style.boxShadow = '0 0 10px rgba(208, 149, 48, 0.5)';
+            particle.style.background = 'rgba(208, 149, 48, 0.6)';
+            particle.style.boxShadow = '0 0 15px rgba(208, 149, 48, 0.8), 0 0 30px rgba(208, 149, 48, 0.4)';
           } else {
-            particle.style.background = 'rgba(22, 66, 132, 0.3)';
-            particle.style.boxShadow = '0 0 10px rgba(22, 66, 132, 0.5)';
+            particle.style.background = 'rgba(22, 66, 132, 0.6)';
+            particle.style.boxShadow = '0 0 15px rgba(22, 66, 132, 0.8), 0 0 30px rgba(22, 66, 132, 0.4)';
           }
           
-          // Animation duration and delay
-          const duration = Math.random() * 20 + 15;
+          // Some particles are white for added contrast
+          if (Math.random() > 0.8) {
+            particle.style.background = 'rgba(255, 255, 255, 0.8)';
+            particle.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.5)';
+          }
+          
+          // More varied animation durations
+          const duration = Math.random() * 15 + 10; // Slightly faster
           particle.style.animationDuration = `${duration}s`;
           
-          const delay = Math.random() * 15;
+          // Less delay for more immediate visual impact
+          const delay = Math.random() * 5;
           particle.style.animationDelay = `${delay}s`;
           
           particlesContainer.appendChild(particle);
